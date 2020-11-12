@@ -5,10 +5,15 @@ module.exports = {
   get,
 };
 
-item = {name: "", durability: "", enhancement: ""}
+item = {name: "", durability: 0, enhancement: 0}
 
-function success(item) {
-  return { ...item };
+function success(name, durability, enhancement) {
+  if(enhancement <20){
+    return enhancement+1
+  } else if (enhancement === 20){
+    return enhancement
+  }
+  return {name, durability, enhancement};
 }
 
 function fail(item) {

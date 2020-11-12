@@ -1,4 +1,4 @@
-const {repair} = require('./enhancer.js');
+const {repair, success, fail} = require('./enhancer.js');
 // test away!
 describe('sanity check', ()=>{
 
@@ -20,5 +20,19 @@ describe('repair function', ()=>{
     it('returns item with durability 100', ()=>{
         expect(repair(item.durability)).toEqual({durability: 100})
     })
+  })
 
+  describe('success function', ()=>{
+    it('function is defined', ()=>{
+      expect(success()).toBeDefined()
+    })
+    it('returns an object', ()=>{
+      expect(success('item')).toBeInstanceOf(Object)
+    })
+    it('returns item with enhancement +1', ()=>{
+        expect(success('tom', 20, 0)).toBe(1)
+    })
+    it('stops enhancement at 20', ()=>{
+        expect(success('tom', 20, 20)).toBe(20)
+    })
   })
