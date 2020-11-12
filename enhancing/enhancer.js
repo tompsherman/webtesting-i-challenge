@@ -16,8 +16,15 @@ function success(name, durability, enhancement) {
   return {name, durability, enhancement};
 }
 
-function fail(item) {
-  return { ...item };
+function fail(name, durability, enhancement) {
+  if(enhancement < 15){
+    return durability-5
+  } else if(enhancement >15){
+    return durability-10
+  } else if(enhancement>16){
+    return durability -10, enhancement -1
+  }
+  return { name, durability, enhancement };
 }
 
 function repair(item) {

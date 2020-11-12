@@ -36,3 +36,21 @@ describe('repair function', ()=>{
         expect(success('tom', 20, 20)).toBe(20)
     })
   })
+
+  describe('fail function', ()=>{
+    it('function is defined', ()=>{
+      expect(fail()).toBeDefined()
+    })
+    it('returns an object', ()=>{
+      expect(fail('item')).toBeInstanceOf(Object)
+    })
+    it('if enhancement <15, durability -5', ()=>{
+        expect(fail('tom', 20, 0)).toBe(15)
+    })
+    it('if enhancement >15, durability -10', ()=>{
+        expect(fail('tom', 20, 16)).toBe(10)
+    })
+    it('if enhancement >16, durability -10 && enhancement -1', ()=>{
+        expect(fail('tom', 20, 17)).toBe(10, 16)
+    })
+  })
